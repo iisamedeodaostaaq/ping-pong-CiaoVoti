@@ -1,3 +1,4 @@
+## Prof.: non ci sono comenti nel codice. Vedo il file istruzioni con una descrizione del codice, ma i commenti vanno nel codice
 x=80
 y=80
 XR=0
@@ -6,6 +7,7 @@ HR=375
 HR2=0
 Verx=1
 Very=1
+## Prof. Non è il raggio ma il diametro. Peraltro questa variabile non viene usata nel codice
 raggio=50
 PuntiG1=0
 PuntiG2=0
@@ -21,8 +23,10 @@ def draw():
     y=y+(3*Very)
     if y>=HR-(20/2) and (x+(20/2)>XR and x-(20/2)<XR+80): 
         Very*=-1
+ ## Prof.: non tieni in considerazione il raggio
     if y<=HR2+35 and (x+(20/2)>XR2 and x-(20/2)<XR2+80):
        Very*=-1
+## Prof.: Mezza pallina finisce fuori campo
     if x>width or x<=0:
         Verx*=-1
     if y>height or y<=0:
@@ -31,10 +35,13 @@ def draw():
         PuntiG1=PuntiG1+10
     if y>=height:
         PuntiG2=PuntiG2+10
+ ## Prof.: Le racchette sono larghe 80
+ ## Prof.: così crei un fastidioso rimbalzo sui bordi. i due if seguenti non servono
     if XR2>=width-50:
         XR2=XR2-50
     if XR>=width-50:
         XR=XR-50
+ ## Prof.: così crei un fastidioso rimbalzo sui bordi. i due if seguenti non servono
     if XR<0:
         XR*=-1
     if XR2<0:
@@ -55,6 +62,7 @@ def draw():
     text ( PuntiG2, 0,50 )
     fill (255 )
     textSize ( 30 )
+## Prof.: l'istruzione fill è valida finchè non cambi il colore di riempimento
     fill(255,120,0)
     text ( PuntiG1, 10,375 )
     fill(255,120,0)
@@ -64,6 +72,7 @@ def draw():
 
 def keyPressed():
     global XR, Verx,XR2
+## Prof.: qui andava gestito il contatto con i bordi del campo
     if keyCode == LEFT:
         XR=XR-25
     if keyCode == RIGHT:
