@@ -1,0 +1,79 @@
+IL GIOCATORE 1 È IL COLORE ARANCIONE
+IL GIOCATORE 2 È IL COLORE AZZURRO
+VINCE IL PRIMO CHE ARRIVA A 100
+IL GIOCATORE 1 SI MUOVE CON LE FRECCIE DIREZIONALI DESTRA E SINISTRA
+IL GIOCATORE 2 SI MUOVE CON LE LETTERE "A" E "D" PER MUOVERSI VERSO SINISTRA "A" E PER MUOVERSI VERSO DESTRA "D"
+Piccoli commenti sul codice :
+
+"size(600,400)" serve a definire le dimensioni della finestra di gioco
+
+"x=x+(3*Verx)" e "y=y+(3*Very)" x ed y danno il verso alla pallina
+
+Se la prima racchetta viene colpita dalla palla "if y>=HR-(20/2) and (x+(20/2)>XR and x-(20/2)<XR+80):" 
+Cambiamo direzione alla palla "Very*=-1" 
+
+Se la seconda racchetta viene colpita dalla palla "if y<=HR2+35 and (x+(20/2)>XR2 and x-(20/2)<XR2+80):"
+Cambiamo direzione alla palla "Very*=-1"
+
+Se la palla colpisce un muro laterarle "if x>width or x<=0:"
+Cambiamo direzione alla palla "Verx*=-1"
+
+Se la palla colpisce un muro laterarle "if y>height or y<=0:"
+Cambiamo direzione alla palla "Very*=-1"
+
+Se la palla colpisce il muro superiore "if y<0:"
++10 punti al Giocatore 1 "PuntiG1=PuntiG1+10"
+
+Se la palla colpisce il muro inferiore "if y>=height:"
++10 punti al Giocatore 2 "PuntiG2=PuntiG2+10"
+
+Faccio in modo che il rettagolo non possa uscire dalla finestra di gioco:
+if XR2>=width-50:
+    XR2=XR2-50
+if XR>=width-50:
+    XR=XR-50
+if XR<0:
+    XR*=-1
+if XR2<0:
+    XR2*=-1
+
+
+Conteggio punti:
+if PuntiG1>=100:
+    textSize(50)
+    fill(255,0,0)
+    text("Giocatore 1 vince", 100,200)
+    delay(1000)
+if PuntiG2>=100:
+    textSize(50)
+    fill(0,0,255)
+    text("Giocatore 2 vince", 100,200)
+    delay(1000)
+
+Mostro i punti sulla finestra di gioco:		 
+  fill (255 )
+    textSize ( 30 )
+    fill(0,120,255)
+    text ( PuntiG2, 0,50 )
+    fill (255 )
+    textSize ( 30 )
+    fill(255,120,0)
+    text ( PuntiG1, 10,375 )
+	
+Colorazione dei rettangoli:
+fill(255,120,0)
+    rect(XR,HR,80,25)
+    fill(0,120,255)
+    rect(XR2,HR2,80,25)
+	
+Movimento giocatore1 :
+if keyCode == LEFT:
+   XR=XR-25
+if keyCode == RIGHT:
+    XR=XR+25
+	
+Movimento giocatore2 :
+if key == "a":
+    XR2=XR2-25
+if key == "d":
+    XR2=XR2+25	
